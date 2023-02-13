@@ -1,0 +1,5 @@
+highscore
+winscherm
+totaal aantal winnen
+opnieuw spelen
+BOT
