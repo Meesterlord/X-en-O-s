@@ -82,6 +82,7 @@ public class Game {
                         getal2 = (cin.nextInt() - 1);
                         if(!bord.bord[getal2][getal1].equals(" ")){
                             System.out.println("Something is there already");
+                            bord.print();
                         }
 
                         else{
