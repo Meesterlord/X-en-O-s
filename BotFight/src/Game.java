@@ -57,6 +57,7 @@ public class Game {
                             bord.setOnBord(player1.getPlaceHolder(), getal2, getal1);
                             bord.print();
                             win = bord.winCondition(player1.getPlaceHolder());
+                            wieWin(win, 1);
                             turn = 2;
                         }
                         notLetter = true;
@@ -89,6 +90,7 @@ public class Game {
                             bord.setOnBord(player2.getPlaceHolder(), getal2, getal1);
                             bord.print();
                             win = bord.winCondition(player2.getPlaceHolder());
+                            wieWin(win, 2);
                             turn = 1;
                         }
                         notLetter = true;
@@ -107,6 +109,20 @@ public class Game {
                 System.out.println("ERROR?????");
             }
 
+        }
+
+    }
+    public void wieWin(boolean eind, int speler){
+        if(eind){
+            if(speler == 1){
+                System.out.println(player1.getName() + " WON!!!!!!");
+            }
+            else{
+                System.out.println(player2.getName() + " WON!!!!!!");
+            }
+        }
+        else{
+            System.out.println("TEST");
         }
     }
 }
