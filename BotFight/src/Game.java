@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -39,70 +38,14 @@ public class Game {
         bord.print();
 
         while(!win){
-            int getal1 ;
-            int getal2 ;
             if(turn == 1){
-                System.out.println(player1.getName() +":");
-                boolean notLetter = false;
-                while(!notLetter) {
-                    try {
-                        Scanner cin = new Scanner(System.in);
-                        getal1 = (cin.nextInt() - 1);
-                        getal2 = (cin.nextInt() - 1);
-                        if(!bord.bord[getal2][getal1].equals(" ")){
-                            System.out.println("Something is there already");
-                            bord.print();
-                        }
-                        else{
-                            bord.setOnBord(player1.getPlaceHolder(), getal2, getal1);
-                            bord.print();
-                            win = bord.winCondition(player1.getPlaceHolder());
-                            wieWin(win, 1);
-                            turn = 2;
-                        }
-                        notLetter = true;
-                    }
-                    catch (InputMismatchException e) {
-                        System.out.println("Fill in a NUMBER!");
-                        bord.print();
-                    }
-                    catch (ArrayIndexOutOfBoundsException e){
-                        System.out.println("From 1 to 3 PLEASE!!");
-                        bord.print();
-                    }
+                if(playerTurnPlay(player1)){
+                    turn = 2;
                 }
-
             }
             else if(turn == 2){
-                System.out.println(player2.getName() + ":");
-                boolean notLetter = false;
-                while(!notLetter) {
-                    try {
-                        Scanner cin = new Scanner(System.in);
-                        getal1 = (cin.nextInt() - 1);
-                        getal2 = (cin.nextInt() - 1);
-                        if(!bord.bord[getal2][getal1].equals(" ")){
-                            System.out.println("Something is there already");
-                            bord.print();
-                        }
-
-                        else{
-                            bord.setOnBord(player2.getPlaceHolder(), getal2, getal1);
-                            bord.print();
-                            win = bord.winCondition(player2.getPlaceHolder());
-                            wieWin(win, 2);
-                            turn = 1;
-                        }
-                        notLetter = true;
-                    }
-                    catch (InputMismatchException e) {
-                        System.out.println("Fill in a NUMBER!");
-                        bord.print();
-                    }
-                    catch (ArrayIndexOutOfBoundsException e){
-                        System.out.println("From 1 to 3 PLEASE!!!");
-                        bord.print();
-                    }
+                if(playerTurnPlay(player2)){
+                    turn = 1;
                 }
             }
             else{
@@ -121,8 +64,41 @@ public class Game {
                 System.out.println(player2.getName() + " WON!!!!!!");
             }
         }
-        else{
-            System.out.println("TEST");
+    }
+    public boolean playerTurnPlay(Player players){
+        System.out.println(players.getName() +":");
+        boolean notLetter = false;
+        while(!notLetter) {
+            try {
+                Scanner cin = new Scanner(System.in);
+                int getal1 = (cin.nextInt() - 1);
+                int getal2 = (cin.nextInt() - 1);
+                if(!bord.bord[getal2][getal1].equals(" ")){
+                    System.out.println("Something is there already");
+                    bord.print();
+                }
+                else{
+                    bord.setOnBord(players.getPlaceHolder(), getal2, getal1);
+                    bord.print();
+                    win = bord.winCondition(players.getPlaceHolder());
+                    wieWin(win, 1);
+                    if(bord.gevuldeVakken == 9){
+                        System.out.println("IT'S A DRAW");
+                        win = true;
+                    }
+                    return true;
+                }
+                notLetter = true;
+            }
+            catch (InputMismatchException e) {
+                System.out.println("Fill in a NUMBER!");
+                bord.print();
+            }
+            catch (ArrayIndexOutOfBoundsException e){
+                System.out.println("From 1 to 3 PLEASE!!");
+                bord.print();
+            }
         }
+        return false;
     }
 }

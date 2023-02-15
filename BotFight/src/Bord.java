@@ -1,8 +1,10 @@
 import java.util.Objects;
 
 public class Bord {
+    int gevuldeVakken;
     String[][] bord;
     public Bord(){
+        gevuldeVakken = 0;
         bord = new String[3][3];
         vulMetLetter(" ");
     }
@@ -52,9 +54,7 @@ public class Bord {
 
 
     public void setOnBord(String player, int x, int y){
+        gevuldeVakken ++;
         bord[x][y] = player;
-    }
-    public void setOnBordTest(){
-        System.out.println("LOL");
     }
 }
