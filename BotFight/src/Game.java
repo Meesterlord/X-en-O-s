@@ -10,7 +10,6 @@ public class Game {
     public Game(int gamemode){
         this.win = false;
         this.gameMode = gamemode;
-        bord = new Bord();
         gameModeChoice();
     }
     public void gameModeChoice(){
@@ -24,6 +23,7 @@ public class Game {
     }
     public void humanVShuman(){
         int turn = 1;
+        bord = new Bord();
         Scanner scanner = new Scanner(System.in);
         System.out.println("What is your name player 1?");
         String antwoord = scanner.nextLine();
@@ -52,6 +52,14 @@ public class Game {
                 System.out.println("ERROR?????");
             }
 
+        }
+        System.out.println("Again?");
+        antwoord = scanner.nextLine();
+        if(antwoord.equals("Yes") || antwoord.equals("yes")){
+            humanVShuman();
+        }
+        else {
+            System.out.println("Until the next time then");
         }
 
     }
