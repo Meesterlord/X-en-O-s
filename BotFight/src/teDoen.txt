@@ -1,5 +1,4 @@
 highscore
-winscherm
 totaal aantal winnen
-opnieuw spelen
+profielen
 BOT

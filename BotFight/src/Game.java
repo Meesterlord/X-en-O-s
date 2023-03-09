@@ -17,10 +17,17 @@ public class Game {
         if(gameMode == 1){
             humanVShuman();
         }
+        if(gameMode == 2){
+            humanVSbot();
+        }
         else{
             System.out.println("ERROR");
         }
     }
+    public void humanVSbot(){
+
+    }
+
     public void humanVShuman(){
         int turn = 1;
         bord = new Bord();
