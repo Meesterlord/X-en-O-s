@@ -3,7 +3,9 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class ProfileChooser {
-    public ProfileChooser(){}
+    public ProfileChooser(){
+
+    }
     public void startGame() throws IOException, InterruptedException {
         FileDerFilers file = new FileDerFilers();
         Scanner scanner = new Scanner(System.in);
@@ -15,11 +17,10 @@ public class ProfileChooser {
             if(file.IsProfileInFile(antwoord)){
                 System.out.println("Profile Found");
                 System.out.println("GREAT! Let's play!");
-                Player playerYou = new Player(antwoord,1);
-                Player playerTwo = new Player("Guest",2);
-                Game game = new Game(1);
-                game.player1 = playerYou;
-                game.player2 = playerTwo;
+                Game game = new Game();
+                game.player1 = new Player(antwoord,1);
+                game.player2 = new Player("Guest",2);
+                game.gameModeChoice(1);
             }
             else{
                 System.out.println("Profile Doesn't Exist");

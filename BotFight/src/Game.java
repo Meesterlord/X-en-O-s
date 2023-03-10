@@ -7,17 +7,15 @@ public class Game {
     Player player1;
     Player player2;
     boolean win;
-    public Game(int gamemode){
+    public Game(){
         this.win = false;
-        this.gameMode = gamemode;
-        gameModeChoice();
     }
-    public void gameModeChoice(){
-
+    public void gameModeChoice(int number){
+        this.gameMode = number;
         if(gameMode == 1){
             humanVShuman();
         }
-        if(gameMode == 2){
+        else if(gameMode == 2){
             humanVSbot();
         }
         else{
@@ -32,12 +30,7 @@ public class Game {
         int turn = 1;
         bord = new Bord();
         Scanner scanner = new Scanner(System.in);
-        System.out.println("What is your name player 1?");
-        String antwoord = scanner.nextLine();
-        player1 = new Player(antwoord, 1);
-        System.out.println("What is your name player 2?");
-        antwoord = scanner.nextLine();
-        player2 = new Player(antwoord, 2);
+        String antwoord;
         System.out.println(player1.getName() + " VS " + player2.getName());
         System.out.println(player1.getName() + " = " + player1.getPlaceHolder());
         System.out.println(player2.getName() + " = " + player2.getPlaceHolder());
