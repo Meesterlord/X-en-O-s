@@ -1,6 +1,6 @@
-thibault:10
-zwarte sint:69
-achterbakse rupsenleider:2
-de ONE:1
-Pieterjanus:0
-michiel:0
+thibault;10
+zwarte sint;69
+achterbakse rupsenleider;2
+de ONE;1
+Pieterjanus;0
+michiel;0

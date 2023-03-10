@@ -1,4 +1,4 @@
 highscore
 totaal aantal winnen
-profielen
+profielen -> Naam kunnen wijzigen + wachtwoord
 BOT

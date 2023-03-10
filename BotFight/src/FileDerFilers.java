@@ -1,5 +1,10 @@
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
+import java.io.File;
+import java.io.IOException;
 
 public class FileDerFilers {
     ArrayList<String> profiles;
@@ -13,6 +18,19 @@ public class FileDerFilers {
         bw.newLine();
         bw.close();
     }
+    public void replaceStringInFile(String replaceString, String naam){
+        try{
+            for(int i = 0; i< profiles.size(); i++){
+                if(naam.equals(profiles.get(i).split(";")[0])){
+                    String data = profiles.get(i);
+                    data = data.replace(profiles.get(i).split(";")[1], replaceString);
+                    Files.writeString(Path.of(profiles.get(i)), data);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public ArrayList<String> readFileIntoArray() throws IOException{
         ArrayList<String> result = new ArrayList<>();
 
@@ -23,18 +41,14 @@ public class FileDerFilers {
         }
         return result;
     }
-    public boolean IsProfileInFile(String naam){
+    public boolean IsProfileInFile(String naam, int getal){
         int waar = 0;
         for(int i = 0; i < profiles.size(); i++){
-            if(naam.equals(profiles.get(i).split(":")[0])){
+            if (naam.equals(profiles.get(i).split(";")[getal])) {
                 waar = 1;
+                break;
             }
         }
-        if(waar == 1){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return waar == 1;
     }
 }

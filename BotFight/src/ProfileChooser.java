@@ -14,7 +14,7 @@ public class ProfileChooser {
         if(antwoord.equals("yes") || antwoord.equals("1")){
             System.out.println("What is your profile?");
             antwoord = scanner.nextLine();
-            if(file.IsProfileInFile(antwoord)){
+            if(file.IsProfileInFile(antwoord, 0)){
                 System.out.println("Profile Found");
                 System.out.println("GREAT! Let's play!");
                 Game game = new Game();
@@ -32,7 +32,7 @@ public class ProfileChooser {
             TimeUnit.SECONDS.sleep(1);
             System.out.println("What is your name?");
             antwoord = scanner.nextLine();
-            if(file.IsProfileInFile(antwoord)){
+            if(file.IsProfileInFile(antwoord, 0)){
                 System.out.println("This profile already exists!!!");
             }
             else {

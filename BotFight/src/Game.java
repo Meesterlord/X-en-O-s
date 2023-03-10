@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -23,7 +24,7 @@ public class Game {
         }
     }
     public void humanVSbot(){
-
+        System.out.println("Is nog in werking");
     }
 
     public void humanVShuman(){
@@ -63,10 +64,12 @@ public class Game {
         }
 
     }
-    public void wieWin(boolean eind, int speler){
+    public void wieWin(boolean eind, int speler) throws IOException {
         if(eind){
             if(speler == 1){
                 System.out.println(player1.getName() + " WON!!!!!!");
+                FileDerFilers file = new FileDerFilers();
+                file.replaceStringInFile("20",player1.getName());
             }
             else{
                 System.out.println(player2.getName() + " WON!!!!!!");
@@ -105,6 +108,8 @@ public class Game {
             catch (ArrayIndexOutOfBoundsException e){
                 System.out.println("From 1 to 3 PLEASE!!");
                 bord.print();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
         return false;
